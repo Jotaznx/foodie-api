@@ -8,4 +8,5 @@ async function Destaques(req, res) {
     }
 }
 
+
 export default { Destaques };

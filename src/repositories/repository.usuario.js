@@ -32,4 +32,17 @@ async function ListarByEmail(email) {
         return usuario[0];
 }
 
-export default {Favoritos, Inserir, ListarByEmail};
+async function ListarById(id_usuario) {
+
+    const sql = `select id_usuario, nome, email, endereco, complemento, bairro, cidade, uf, cep, dt_cadastro from usuario
+    where id_usuario = ?`;
+    
+    const usuario = await execute(sql, [id_usuario]);
+
+    if (usuario.length == 0)
+        return [];
+    else
+        return usuario[0];
+}
+
+export default {Favoritos, Inserir, ListarByEmail, ListarById};

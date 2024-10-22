@@ -44,9 +44,9 @@ async function Login(email, senha) {
 
 async function Perfil(id_usuario) {
 
-    const favoritos = await repositoryUsuario.ListarById(id_usuario);
-    
-    return favoritos;
+    const usuario = await repositoryUsuario.ListarById(id_usuario);
+
+    return usuario;
 }
 
 

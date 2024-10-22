@@ -17,11 +17,19 @@ async function Inserir(nome, email, senha, endereco, complemento, bairro, cidade
     
     const usuario = await execute(sql, [nome, email, senha, endereco, complemento, bairro, cidade, uf, cep]);
 
-    let retorno = {
-        id_usuario: usuario[0].ID_USUARIO
-    }
-
-    return retorno;
+    return usuario[0];
 }
 
-export default {Favoritos, Inserir};
+async function ListarByEmail(email) {
+    const sql = `select id_usuario, senha, nome, email, endereco, complemento, bairro, cidade, uf, cep, dt_cadastro from usuario
+    where email = ?`;
+    
+    const usuario = await execute(sql, [email]);
+
+    if (usuario.length == 0)
+        return [];
+    else
+        return usuario[0];
+}
+
+export default {Favoritos, Inserir, ListarByEmail};

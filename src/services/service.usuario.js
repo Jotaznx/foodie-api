@@ -34,7 +34,7 @@ async function Login(email, senha) {
             delete usuario.senha;    
             
             usuario.token = jwt.CreateJWT(usuario.id_usuario);
-            
+
             return usuario;
         }
         else
@@ -43,7 +43,9 @@ async function Login(email, senha) {
 }
 
 async function Perfil(id_usuario) {
+
     const favoritos = await repositoryUsuario.ListarById(id_usuario);
+    
     return favoritos;
 }
 
